@@ -106,7 +106,6 @@ class add_contact(unittest.TestCase):
         wd.find_element_by_name("byear").send_keys(Contactdate.year)
 
     def fill_annivdate_form(self, wd, Contactdate):
-        # anniversary
         d = Contactdate.day + 2
         if not wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[%s]" % d).is_selected():
             wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[%s]" % d).click()
@@ -117,10 +116,10 @@ class add_contact(unittest.TestCase):
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(Contactdate.year)
 
-    def fill_pic_form(self, wd):
+    def fill_pic_form(self, wd, path):
         # photo
         wd.find_element_by_name("photo").click()
-        wd.find_element_by_name("photo").click()
+        wd.find_element_by_name("photo").send_keys(path)
 
     def confirm_contact_creation(self, wd):
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
@@ -133,10 +132,10 @@ class add_contact(unittest.TestCase):
         self.open_home_page(wd)
         self.login(wd, name="admin", password="secret")
         self.init_contact_creation(wd)
-        self.fill_text_form(wd, Contacttext(firstname="Michael", middlename="J.", lastname="Fox", nickname="Marti", title="actor", company="Hollywood", address="Los Angeles", homephone="911", mobilephone="9911", workphone="999111", fax="919191", email2="mail2@mail.ff", email3="mail3@mail.ff", homepage="fox.ff", address2="adr2", phone2="02", notes="Back to the Future"))
+        self.fill_text_form(wd, Contacttext(firstname="Michael", middlename="J.", lastname="Fox", nickname="Marti", title="Actor", company="Hollywood", address="Los Angeles", homephone="911", mobilephone="9911", workphone="999111", fax="919191", email2="mail2@mail.ff", email3="mail3@mail.ff", homepage="fox.ff", address2="adr2", phone2="02", notes="Back to the Future"))
         self.fill_birthdate_form(wd, Contactdate(day=9, month=6, year=1961))
         self.fill_annivdate_form(wd, Contactdate(day=26, month=10, year=1985))
-        self.fill_pic_form(wd)
+        self.fill_pic_form(wd, path="C:\\img.jpg")
         self.confirm_contact_creation(wd)
         self.logout(wd)
 
