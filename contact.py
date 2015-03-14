@@ -1,8 +1,9 @@
 __author__ = 'ZSGX'
 
-class contact_text:
-    def __init__(self, firstname, middlename, lastname, nickname, title, company, address, homephone, mobilephone, workphone, fax, email2, email3, homepage, address2, phone2, notes)
-        self.fistname = firstname
+
+class Contacttext:
+    def __init__(self, firstname, middlename, lastname, nickname, title, company, address, homephone, mobilephone, workphone, fax, email2, email3, homepage, address2, phone2, notes):
+        self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
         self.nickname = nickname
@@ -20,4 +21,9 @@ class contact_text:
         self.phone2 = phone2
         self.notes = notes
 
-class contact_date:
+class Contactdate:
+    def __init__(self, day, month, year):
+        self.day = day
+        self.month = month
+        self.year = year
+
