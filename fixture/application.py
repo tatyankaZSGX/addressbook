@@ -1,12 +1,14 @@
 __author__ = 'ZSGX'
 
 from selenium.webdriver.firefox.webdriver import WebDriver
+from fixture.Session import SessionHelper
 
 class Application:
 
     def __init__ (self):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
+        self.Session = SessionHelper
 
     def open_home_page(self):
         wd = self.wd
