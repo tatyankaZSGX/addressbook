@@ -184,3 +184,20 @@ class ContactHelper:
         wd.find_element_by_name("photo").send_keys(Contact.filepath)
         #confirm contact creation
         wd.find_element_by_name("update").click()
+
+    def delete_first_contact_from_homepage(self):
+        wd = self.app.wd
+        #select first contact
+        wd.find_element_by_name("selected[]").click()
+        #delete
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
+
+    def delete_first_contact_while_editing(self):
+        wd = self.app.wd
+        #select first contact
+        wd.find_element_by_name("selected[]").click()
+        #init editing
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+        #delete from edit page
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
