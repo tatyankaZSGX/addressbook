@@ -91,7 +91,7 @@ class ContactHelper:
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(Contact.ayear)
         # photo
-        wd.find_element_by_name("photo").click()
+        #wd.find_element_by_name("photo").click()
         wd.find_element_by_name("photo").send_keys(Contact.filepath)
         #confirm contact creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
