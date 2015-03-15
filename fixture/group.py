@@ -9,7 +9,7 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
 
-    def create_group(self, Group):
+    def create(self, Group):
         wd = self.app.wd
         self.open_groups_page()
         # init group creation
