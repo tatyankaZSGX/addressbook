@@ -96,9 +96,20 @@ class ContactHelper:
         #confirm contact creation
         wd.find_element_by_name("submit").click()
 
-    def edit_first_contact(self, Contact):
+    def go_to_editpage_from_details(self):
+        wd = self.app.wd
+        #go to details
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img").click()
+        #init editing
+        wd.find_element_by_name("modifiy").click()
+
+
+    def go_to_editpage_from_homepage(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+
+    def edit_contact(self, Contact):
+        wd = self.app.wd
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(Contact.firstname)
