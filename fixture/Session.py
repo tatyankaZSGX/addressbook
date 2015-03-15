@@ -2,7 +2,7 @@ __author__ = 'ZSGX'
 
 class SessionHelper:
 
-    def __init__(self):
+    def __init__(self, app):
         self.app = app
 
     def login(self, username, password):
@@ -14,7 +14,7 @@ class SessionHelper:
         wd.find_element_by_name("pass").click()
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_css_selector("input[type=\"submit\"]").click())
+        wd.find_element_by_css_selector("input[type=\"submit\"]").click()
 
     def logout(self):
         wd = self.app.wd
