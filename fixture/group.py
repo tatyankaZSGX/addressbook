@@ -9,18 +9,11 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
 
-    def edit_field(self, field_name, text):
-        wd = self.app.wd
-        if text is not None:
-            wd.find_element_by_name(field_name).click()
-            wd.find_element_by_name(field_name).clear()
-            wd.find_element_by_name(field_name).send_keys(text)
-
     def fill_group_form(self, Group):
         wd = self.app.wd
-        self.edit_field(field_name="group_name", text=Group.name)
-        self.edit_field(field_name="group_header", text=Group.header)
-        self.edit_field(field_name="group_footer", text=Group.footer)
+        self.app.edit_field(field_name="group_name", text=Group.name)
+        self.app.edit_field(field_name="group_header", text=Group.header)
+        self.app.edit_field(field_name="group_footer", text=Group.footer)
 
     def create(self, Group):
         wd = self.app.wd
