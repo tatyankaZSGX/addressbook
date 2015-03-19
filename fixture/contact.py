@@ -61,6 +61,7 @@ class ContactHelper:
 
     def go_to_editpage_from_details(self):
         wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
         #go to details
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img").click()
         #init editing
@@ -69,6 +70,7 @@ class ContactHelper:
 
     def go_to_editpage_from_homepage(self):
         wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
 
     def edit_contact(self, Contact):
@@ -79,6 +81,7 @@ class ContactHelper:
 
     def delete_first_contact_from_homepage(self):
         wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
         #select first contact
         wd.find_element_by_name("selected[]").click()
         #delete
@@ -87,6 +90,7 @@ class ContactHelper:
 
     def delete_first_contact_while_editing(self):
         wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
         #select first contact
         wd.find_element_by_name("selected[]").click()
         #init editing
