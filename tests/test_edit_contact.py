@@ -3,11 +3,15 @@ __author__ = 'ZSGX'
 from model.contact import Contact
 
 def test_edit_first_contact(app):
+    if app.contact.count() == 0:
+        app.contact.create(Contact(firstname="test"))
     app.contact.go_to_editpage_from_homepage()
     app.contact.edit_contact(Contact(firstname="new", middlename="Jasd", lastname="Foxsa", nickname="Madsti",
                                title="adasor", company="Hoasdadood", address="Ladngeles"))
 
 def test_edit_first_contact_from_details(app):
+    if app.contact.count() == 0:
+        app.contact.create(Contact(firstname="test"))
     app.contact.go_to_editpage_from_details()
     app.contact.edit_contact(Contact(firstname="", middlename="J.", lastname="Fox", nickname="Marti",
                                title="Actor", company="Hollywood", address="Los Angeles", homephone="911",

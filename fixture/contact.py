@@ -97,3 +97,8 @@ class ContactHelper:
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
         #delete from edit page
         wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
+
+    def count(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+        return len(wd.find_elements_by_name("selected[]"))
