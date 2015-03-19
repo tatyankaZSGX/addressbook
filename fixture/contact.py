@@ -58,10 +58,17 @@ class ContactHelper:
         self.fill_contact_form(Contact)
         #confirm contact creation
         wd.find_element_by_name("submit").click()
+        self.go_to_homepage()
+
+    def go_to_homepage(self):
+        wd = self.app.wd
+        if wd.current_url.endswith("addressbook/") and len(wd.find_elements_by_name("add")) > 0:
+            return
+        wd.find_element_by_link_text("home").click()
 
     def go_to_editpage_from_details(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
+        self.go_to_homepage()
         #go to details
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img").click()
         #init editing
@@ -70,7 +77,7 @@ class ContactHelper:
 
     def go_to_editpage_from_homepage(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
+        self.go_to_homepage()
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
 
     def edit_contact(self, Contact):
@@ -78,27 +85,30 @@ class ContactHelper:
         self.fill_contact_form(Contact)
         #confirm contact creation
         wd.find_element_by_name("update").click()
+        self.go_to_homepage()
 
     def delete_first_contact_from_homepage(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
+        self.go_to_homepage()
         #select first contact
         wd.find_element_by_name("selected[]").click()
         #delete
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
+        self.go_to_homepage()
 
     def delete_first_contact_while_editing(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
+        self.go_to_homepage()
         #select first contact
         wd.find_element_by_name("selected[]").click()
         #init editing
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
         #delete from edit page
         wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
+        self.go_to_homepage()
 
     def count(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
+        self.go_to_homepage()
         return len(wd.find_elements_by_name("selected[]"))
