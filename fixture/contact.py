@@ -123,5 +123,5 @@ class ContactHelper:
             #text = el.text
             text = el.find_element_by_name("selected[]").get_attribute("title")
             id = el.find_element_by_name("selected[]").get_attribute("value")
-            c_list.append(Contact(lastname=text, id=id))
+            c_list.append(Contact(contactname=text, id=id))
         return c_list

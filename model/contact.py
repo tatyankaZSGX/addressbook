@@ -4,7 +4,7 @@ __author__ = 'ZSGX'
 class Contact:
     def __init__(self, firstname=None, middlename=None, lastname=None, nickname=None, title=None, company=None, address=None, homephone=None, mobilephone=None,
                  workphone=None, fax=None, email2=None, email3=None, homepage=None, address2=None, phone2=None, notes=None, bday=None, bmonth=None, byear=None, aday=None,
-                 amonth=None, ayear=None, path=None, id=None):
+                 amonth=None, ayear=None, path=None, id=None, contactname=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -30,6 +30,10 @@ class Contact:
         self.ayear = ayear
         self.filepath = path
         self.id = id
+        self.contactname = contactname
 
     def __repr__(self):
         return"%s, %s" % (self.id, self.lastname)
+
+    def __eq__(self, other):
+        return (self.id is None or other.id is None or self.id == other.id) and self.contactname == other.contactname
