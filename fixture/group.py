@@ -1,5 +1,7 @@
 __author__ = 'ZSGX'
 
+from model.group import Group
+
 class GroupHelper:
 
     def __init__(self, app):
@@ -56,3 +58,13 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_group_list(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        gr_list = []
+        for el in wd.find_elements_by_css_selector("span.group"):
+            text = el.text
+            id = el.find_element_by_name("selected[]").get_attribute("value")
+            gr_list.append(Group(name=text, id=id))
+        return gr_list
