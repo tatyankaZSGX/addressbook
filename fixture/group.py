@@ -68,3 +68,4 @@ class GroupHelper:
             id = el.find_element_by_name("selected[]").get_attribute("value")
             gr_list.append(Group(name=text, id=id))
         return gr_list
+

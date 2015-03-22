@@ -27,8 +27,8 @@
       <file leaf-file-name="group.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fixture/group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="652" max-vertical-offset="1275">
-              <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="703" max-vertical-offset="1309">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -37,18 +37,18 @@
       <file leaf-file-name="group.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+              <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_add_group.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_add_group.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_add_group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-              <caret line="4" column="43" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.25247526" vertical-offset="0" max-vertical-offset="606">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -57,17 +57,17 @@
       <file leaf-file-name="test_del_group.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_del_group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_edit_group.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_edit_group.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_edit_group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25247526" vertical-offset="0" max-vertical-offset="606">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
               <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
               <folding />
             </state>
@@ -99,11 +99,11 @@
         <option value="$PROJECT_DIR$/tests/test_edit_contact.py" />
         <option value="$PROJECT_DIR$/fixture/contact.py" />
         <option value="$PROJECT_DIR$/fixture/application.py" />
-        <option value="$PROJECT_DIR$/model/group.py" />
         <option value="$PROJECT_DIR$/fixture/group.py" />
-        <option value="$PROJECT_DIR$/tests/test_add_group.py" />
+        <option value="$PROJECT_DIR$/model/group.py" />
         <option value="$PROJECT_DIR$/tests/test_del_group.py" />
         <option value="$PROJECT_DIR$/tests/test_edit_group.py" />
+        <option value="$PROJECT_DIR$/tests/test_add_group.py" />
       </list>
     </option>
   </component>
@@ -222,7 +222,7 @@
       <recent name="C:\bookproj\addressbook\fixture" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.py.test in test_edit_group.py">
+  <component name="RunManager" selected="Python tests.py.test in test_del_group.py">
     <configuration default="false" name="py.test in tests" type="tests" factoryName="py.test" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -484,9 +484,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.py.test in test_edit_group.py" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.py.test in test_del_group.py" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.py.test in test_add_group.py" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.py.test in test_del_group.py" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.py.test in test_add_group.py" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.py.test in test_edit_group.py" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.py.test in tests" />
         <item index="4" class="java.lang.String" itemvalue="Python tests.py.test in test_del_contact.py" />
       </list>
@@ -582,7 +582,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="629">
           <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
           <folding>
-            <element signature="e#21#79#0" expanded="true" />
+            <element signature="e#21#79#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -624,7 +624,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="527">
           <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
           <folding>
-            <element signature="e#21#79#0" expanded="true" />
+            <element signature="e#21#79#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -876,47 +876,47 @@
         <state vertical-scroll-proportion="0.4069641" vertical-offset="0" max-vertical-offset="919">
           <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
           <folding>
-            <element signature="e#21#79#0" expanded="true" />
+            <element signature="e#21#79#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/group.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fixture/group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="652" max-vertical-offset="1275">
-          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="703" max-vertical-offset="1309">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_add_group.py">
+    <entry file="file://$PROJECT_DIR$/model/group.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <caret line="4" column="43" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="43" />
+          <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_del_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_edit_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25247526" vertical-offset="0" max-vertical-offset="606">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_add_group.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25247526" vertical-offset="0" max-vertical-offset="606">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
