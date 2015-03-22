@@ -120,7 +120,6 @@ class ContactHelper:
         self.go_to_homepage()
         c_list = []
         for el in wd.find_elements_by_xpath("//div/div[4]/form[2]/table/tbody/tr/td[1]"):
-            #text = el.text
             text = el.find_element_by_name("selected[]").get_attribute("title")
             id = el.find_element_by_name("selected[]").get_attribute("value")
             c_list.append(Contact(contactname=text, id=id))
