@@ -9,7 +9,6 @@ def test_add_contact(app):
                                email3="mail3@mail.ff", homepage="fox.ff", address2="adr2", phone2="02",
                                notes="Back to the Future", bday=9, bmonth=6, byear=1961, aday=26, amonth=10,
                                ayear=1985, path="C:\\img.jpg")
-    contact.contactname = "Select (%s %s)" % (contact.firstname, contact.lastname)
     app.contact.create(contact)
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) + 1 == len(new_contacts)

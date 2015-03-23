@@ -7,7 +7,6 @@ def test_edit_first_contact(app):
         app.contact.create(Contact(firstname="test"))
     contact = Contact(firstname="new", middlename="Jasd", lastname="Foxsa", nickname="Madsti",
                                title="adasor", company="Hoasdadood", address="Ladngeles")
-    contact.contactname = "Select (%s %s)" % (contact.firstname, contact.lastname)
     old_contacts = app.contact.get_contact_list()
     contact.id = old_contacts[0].id
     app.contact.go_to_editpage_from_homepage()
