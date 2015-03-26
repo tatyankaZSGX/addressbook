@@ -69,18 +69,20 @@ class ContactHelper:
             return
         wd.find_element_by_link_text("home").click()
 
-    def go_to_editpage_from_details(self):
+    def go_to_editpage_from_details(self, index):
         wd = self.app.wd
+        ind = index+2
         self.go_to_homepage()
         #go to details
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img").click()
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[%s]/td[7]/a/img" % ind).click()
         #init editing
         wd.find_element_by_name("modifiy").click()
 
-    def go_to_editpage_from_homepage(self):
+    def go_to_editpage_from_homepage(self, index):
         wd = self.app.wd
+        ind = index+2
         self.go_to_homepage()
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[%s]/td[8]/a/img" % ind).click()
 
     def edit_contact(self, Contact):
         wd = self.app.wd
@@ -92,9 +94,13 @@ class ContactHelper:
 
     def delete_first_contact_from_homepage(self):
         wd = self.app.wd
+        self.delete_contact_by_index_from_homepage(0)
+
+    def delete_contact_by_index_from_homepage(self, index):
+        wd = self.app.wd
         self.go_to_homepage()
-        #select first contact
-        wd.find_element_by_name("selected[]").click()
+        #select contact
+        wd.find_elements_by_name("selected[]")[index].click()
         #delete
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
@@ -103,11 +109,16 @@ class ContactHelper:
 
     def delete_first_contact_while_editing(self):
         wd = self.app.wd
+        self.delete_contact_by_index_while_editing(0)
+
+    def delete_contact_by_index_while_editing(self, index):
+        wd = self.app.wd
+        ind = int(index)+2
         self.go_to_homepage()
         #select first contact
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
         #init editing
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[%s]/td[8]/a/img" % ind).click()
         #delete from edit page
         wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
         self.go_to_homepage()
