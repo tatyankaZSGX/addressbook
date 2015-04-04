@@ -69,12 +69,15 @@ class ContactHelper:
             return
         wd.find_element_by_link_text("home").click()
 
-    def go_to_editpage_from_details(self, index):
+    def go_to_details(self, index):
         wd = self.app.wd
         ind = index+2
         self.go_to_homepage()
-        #go to details
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[%s]/td[7]/a/img" % ind).click()
+
+    def go_to_editpage_from_details(self, index):
+        wd = self.app.wd
+        self.go_to_details(index)
         #init editing
         wd.find_element_by_name("modifiy").click()
 

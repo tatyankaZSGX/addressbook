@@ -1,10 +1,12 @@
 __author__ = 'ZSGX'
 
 import re
+from random import randrange
 
-def test_match_tel_with_homepage(app):
-    contact_from_homepage = app.contact.get_contact_list()[0]
-    contact_from_editpage = app.contact.get_contact_props_from_editpage(0)
+def test_match_contact_with_homepage(app):
+    index = randrange(len(app.contact.get_contact_list()))
+    contact_from_homepage = app.contact.get_contact_list()[index]
+    contact_from_editpage = app.contact.get_contact_props_from_editpage(index)
     assert contact_from_homepage.tel == merge_tel_like_homepage(contact_from_editpage)
 
 def clear(s):
