@@ -143,9 +143,12 @@ class ContactHelper:
                 cell_list = el.find_elements_by_tag_name("td")
                 firstname = cell_list[2].text
                 lastname = cell_list[1].text
+                address = cell_list[3].text
+                mails = cell_list[4].text
                 tel = cell_list[5].text
                 id = el.find_element_by_name("selected[]").get_attribute("id")
-                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id, tel=tel))
+                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id, tel=tel,
+                                                  address=address, mails = mails))
         return list(self.contact_cache)
 
     def get_contact_props_from_editpage(self, index):
@@ -173,4 +176,4 @@ class ContactHelper:
         return Contact(firstname=firstname, middlename=middlename,lastname=lastname, nickname=nickname, title=title,
                        company=company, address=address, homephone=home, mobilephone=mobile, workphone=work, fax=fax,
                        email=email, email2=email2, email3=email3, homepage=homepage, address2=address2,
-                       phone2=phone2, notes=notes)
+                       phone2=phone2, notes=notes, id=id)
