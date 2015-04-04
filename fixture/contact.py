@@ -113,7 +113,7 @@ class ContactHelper:
 
     def delete_contact_by_index_while_editing(self, index):
         wd = self.app.wd
-        ind = int(index)+2
+        ind = index+2
         self.go_to_homepage()
         #select first contact
         wd.find_elements_by_name("selected[]")[index].click()
@@ -140,6 +140,34 @@ class ContactHelper:
                 cell_list = el.find_elements_by_tag_name("td")
                 firstname = cell_list[2].text
                 lastname = cell_list[1].text
+                tel = cell_list[5].text
                 id = el.find_element_by_name("selected[]").get_attribute("id")
-                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id))
+                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id, tel=tel))
         return list(self.contact_cache)
+
+    def get_contact_props_from_editpage(self, index):
+        wd = self.app.wd
+        self.go_to_editpage_from_homepage(index)
+        id = wd.find_element_by_name("id").get_attribute("value")
+        firstname = wd.find_element_by_name("firstname").get_attribute("value")
+        middlename = wd.find_element_by_name("middlename").get_attribute("value")
+        lastname = wd.find_element_by_name("lastname").get_attribute("value")
+        nickname = wd.find_element_by_name("nickname").get_attribute("value")
+        company = wd.find_element_by_name("company").get_attribute("value")
+        title = wd.find_element_by_name("title").get_attribute("value")
+        address = wd.find_element_by_name("address").text
+        home = wd.find_element_by_name("home").get_attribute("value")
+        mobile = wd.find_element_by_name("mobile").get_attribute("value")
+        work = wd.find_element_by_name("work").get_attribute("value")
+        fax = wd.find_element_by_name("fax").get_attribute("value")
+        email = wd.find_element_by_name("email").get_attribute("value")
+        email2 = wd.find_element_by_name("email2").get_attribute("value")
+        email3 = wd.find_element_by_name("email3").get_attribute("value")
+        homepage = wd.find_element_by_name("homepage").get_attribute("value")
+        address2 = wd.find_element_by_name("address2").text
+        phone2 = wd.find_element_by_name("phone2").get_attribute("value")
+        notes = wd.find_element_by_name("notes").text
+        return Contact(firstname=firstname, middlename=middlename,lastname=lastname, nickname=nickname, title=title,
+                       company=company, address=address, homephone=home, mobilephone=mobile, workphone=work, fax=fax,
+                       email=email, email2=email2, email3=email3, homepage=homepage, address2=address2,
+                       phone2=phone2, notes=notes)
