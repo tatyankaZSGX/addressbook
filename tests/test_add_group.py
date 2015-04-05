@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 from model.group import Group
-import pytest
 import random
 import string
+import pytest
 
 def random_string(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits + " "*15
+    symbols = string.ascii_letters + string.digits + " "*10
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
-testdata = [
-    Group(name="", header="", footer=""),
-    Group(name=random_string("", 10), header=random_string("header", 10), footer=random_string("footer", 10))
+testdata = [Group(name="", header="", footer="")] + [
+    Group(name=random_string("", 10), header=random_string("header", 10),footer=random_string("footer", 10))
+    for i in range(5)
 ]
 
 @pytest.mark.parametrize("group", testdata, ids=[str(x) for x in testdata])
