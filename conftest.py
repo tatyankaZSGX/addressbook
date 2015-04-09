@@ -1,24 +1,28 @@
 __author__ = 'ZSGX'
 
 import pytest
+import json
+import os.path
 from fixture.application import Application
 
 fixture = None
+target = None
 
 @pytest.fixture()
 def app(request):
     global fixture
+    global target
     browser = request.config.getoption("--browser")
-    homeurl = request.config.getoption("--homeurl")
-    if fixture is None:
-        fixture = Application(browser, homeurl)
-    else:
-        if not fixture.is_valid():
-            fixture = Application(browser, homeurl)
-    fixture.session.ensure_login(username="admin", password="secret")
+    config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), request.config.getoption("--target"))
+    if target is None:
+        with open(config_file) as f:
+            target = json.load(f)
+    if fixture is None or not fixture.is_valid():
+            fixture = Application(browser, target['homeurl'])
+    fixture.session.ensure_login(target['username'],target['password'])
     return fixture
 
-@pytest.fixture(scope = "session", autouse = True)
+@pytest.fixture(scope="session", autouse=True)
 def stop(request):
     def fin():
         fixture.session.ensure_logout()
@@ -28,4 +32,4 @@ def stop(request):
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="firefox")
-    parser.addoption("--homeurl" ,action="store", default="http://localhost/addressbook/")
+    parser.addoption("--target",action="store", default="target.json")
