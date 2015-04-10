@@ -2,7 +2,6 @@ __author__ = 'ZSGX'
 from model.group import Group
 from random import randrange
 import pytest
-from data.group import constant as testdata
 
 #def test_edit_first_group(app):
 #    if app.group.count() == 0:
@@ -16,8 +15,8 @@ from data.group import constant as testdata
 #    old_groups[0] = group
 #    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
-@pytest.mark.parametrize("group", testdata, ids=[str(x) for x in testdata])
-def test_edit_rand_group(app, group):
+def test_edit_rand_group(app, data_group):
+    group = data_group
     if app.group.count() == 0:
         app.group.create(Group(name = "test"))
     old_groups = app.group.get_group_list()

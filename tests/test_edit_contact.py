@@ -2,8 +2,6 @@ __author__ = 'ZSGX'
 
 from model.contact import Contact
 from random import randrange
-import pytest
-from data.contact import constant as testdata
 
 #def test_edit_first_contact_from_homepage(app):
 #    if app.contact.count() == 0:
@@ -33,8 +31,9 @@ from data.contact import constant as testdata
 #    old_contacts[0] = contact
 #    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
-@pytest.mark.parametrize("contact", testdata, ids=[str(x) for x in testdata])
-def test_edit_rand_contact_from_homepage(app, contact):
+
+def test_edit_rand_contact_from_homepage(app, data_contact):
+    contact = data_contact
     if app.contact.count() == 0:
         app.contact.create(Contact(firstname="test"))
     old_contacts = app.contact.get_contact_list()
@@ -47,8 +46,8 @@ def test_edit_rand_contact_from_homepage(app, contact):
     old_contacts[index] = contact
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
-@pytest.mark.parametrize("contact", testdata, ids=[str(x) for x in testdata])
-def test_edit_rand_contact_from_details(app, contact):
+def test_edit_rand_contact_from_details(app, data_contact):
+    contact = data_contact
     if app.contact.count() == 0:
        app.contact.create(Contact(firstname="test"))
     old_contacts = app.contact.get_contact_list()
