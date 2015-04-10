@@ -46,8 +46,8 @@ def test_edit_rand_contact_from_homepage(app, data_contact):
     old_contacts[index] = contact
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
-def test_edit_rand_contact_from_details(app, data_contact):
-    contact = data_contact
+def test_edit_rand_contact_from_details(app, json_contact):
+    contact = json_contact
     if app.contact.count() == 0:
        app.contact.create(Contact(firstname="test"))
     old_contacts = app.contact.get_contact_list()
