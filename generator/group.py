@@ -29,7 +29,7 @@ def random_string(prefix, maxlen):
 
 testdata = [Group(name="", header="", footer="")] + [
     Group(name=random_string("", 10), header=random_string("header", 10),footer=random_string("footer", 10))
-    for i in range(3)
+    for i in range(n)
 ]
 
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)
