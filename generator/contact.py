@@ -1,6 +1,6 @@
 __author__ = 'ZSGX'
 
-import json
+import jsonpickle
 import getopt
 import sys
 import os.path
@@ -27,7 +27,7 @@ def random_string(prefix, maxlen):
     symbols = string.ascii_letters + string.digits + " "*5
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
-randdata = [Contact(firstname=random_string("", 10), middlename=random_string("", 10), lastname=random_string("", 10),
+testdata = [Contact(firstname=random_string("", 10), middlename=random_string("", 10), lastname=random_string("", 10),
             nickname=random_string("", 10), title=random_string("", 10), company=random_string("", 10),
             address=random_string("", 10), homephone=random_string("", 10), mobilephone=random_string("", 10),
             workphone=random_string("", 10), fax=random_string("", 10), email2=random_string("", 10),
@@ -39,4 +39,5 @@ randdata = [Contact(firstname=random_string("", 10), middlename=random_string(""
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)
 
 with open(file, "w") as out:
-    out.write(json.dumps(randdata, default=lambda x: x.__dict__, indent = 2))
+    jsonpickle.set_encoder_options("json", indent=2)
+    out.write(jsonpickle.encode(testdata))
