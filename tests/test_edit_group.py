@@ -1,7 +1,6 @@
 __author__ = 'ZSGX'
 from model.group import Group
 from random import randrange
-import pytest
 
 def test_edit_first_group(app, data_group):
     group = data_group
