@@ -3,6 +3,7 @@ __author__ = 'ZSGX'
 import mysql.connector
 from model.group import Group
 from model.contact import Contact
+import re
 
 class DbFixture:
 
@@ -30,14 +31,41 @@ class DbFixture:
         list = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select id, firstname, lastname, address from addressbook where deprecated='0000-00-00 "
+            cursor.execute("select id, firstname, lastname, address, home, mobile, work, phone2, email, email2, "
+                           "email3 from addressbook where deprecated='0000-00-00 "
                            "00:00:00'")
             for row in cursor:
-                (id, firstname, lastname, address) = row
-                list.append(Contact(id=str(id), firstname=firstname, lastname=lastname, address=address))
+                (id, firstname, lastname, address, home, mobile, work, phone2, email, email2, email3) = row
+                element = Contact(id=str(id), firstname=firstname, lastname=lastname, address=address,
+                                    homephone=home, mobilephone=mobile, workphone=work, phone2=phone2, email=email,
+                                    email2=email2, email3=email3, tel=None, mails=None)
+                element.tel = self.merge_tel_like_homepage(element)
+                element.mails = self.merge_mail_like_homepage(element)
+                list.append(element)
         finally:
             cursor.close()
         return list
 
     def destroy(self):
         self.connection.close()
+
+    def clear(self, s):
+        return re.sub("[() -]", "", s)
+
+    def merge_tel_like_homepage(self, contact):
+        return "\n".join(filter(lambda x: x!="",
+                            map(lambda x: self.clear(x),
+                                filter(lambda x: x is not None, [contact.homephone, contact.mobilephone,
+                                                                 contact.workphone, contact.phone2]))))
+
+    def clear_board_spaces(self, s):
+        return re.sub("^ *| *$", "", s)
+
+    def clear_inner_spaces(self, s):
+        return re.sub(" +", " ", s)
+
+    def merge_mail_like_homepage(self, contact):
+        return "\n".join(filter(lambda x: x!="",
+                            map(lambda x: self.clear_inner_spaces(x),
+                                map(lambda x: self.clear_board_spaces(x),
+                                    filter(lambda x: x is not None,[contact.email, contact.email2,contact.email3])))))
