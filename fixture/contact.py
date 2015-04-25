@@ -75,17 +75,33 @@ class ContactHelper:
         self.go_to_homepage()
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[%s]/td[7]/a/img" % ind).click()
 
-    def go_to_editpage_from_details(self, index):
+    def go_to_details_by_id(self, id):
+        wd = self.app.wd
+        self.go_to_homepage()
+        wd.find_element_by_css_selector("a[href='view.php?id=%s']" % id).click()
+
+    def go_to_editpage_by_index_from_details(self, index):
         wd = self.app.wd
         self.go_to_details(index)
         #init editing
         wd.find_element_by_name("modifiy").click()
 
-    def go_to_editpage_from_homepage(self, index):
+    def go_to_editpage_by_id_from_details(self, id):
+        wd = self.app.wd
+        self.go_to_details_by_id(id)
+        #init editing
+        wd.find_element_by_name("modifiy").click()
+
+    def go_to_editpage_by_index_from_homepage(self, index):
         wd = self.app.wd
         ind = index+2
         self.go_to_homepage()
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[%s]/td[8]/a/img" % ind).click()
+
+    def go_to_editpage_by_id_from_homepage(self, id):
+        wd = self.app.wd
+        self.go_to_homepage()
+        wd.find_element_by_css_selector("a[href='edit.php?id=%s']" % id).click()
 
     def edit_contact(self, Contact):
         wd = self.app.wd
@@ -110,19 +126,31 @@ class ContactHelper:
         self.go_to_homepage()
         self.contact_cache = None
 
+    def delete_contact_by_id_from_homepage(self, id):
+        wd = self.app.wd
+        self.go_to_homepage()
+        #select contact
+        wd.find_element_by_css_selector("input[id='%s']" % id).click()
+        #delete
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
+        self.go_to_homepage()
+        self.contact_cache = None
+
     def delete_first_contact_while_editing(self):
         wd = self.app.wd
         self.delete_contact_by_index_while_editing(0)
 
     def delete_contact_by_index_while_editing(self, index):
         wd = self.app.wd
-        ind = index+2
+        self.go_to_editpage_by_index_from_homepage(index)
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
         self.go_to_homepage()
-        #select first contact
-        wd.find_elements_by_name("selected[]")[index].click()
-        #init editing
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[%s]/td[8]/a/img" % ind).click()
-        #delete from edit page
+        self.contact_cache = None
+
+    def delete_contact_by_id_while_editing(self, id):
+        wd = self.app.wd
+        self.go_to_editpage_by_id_from_homepage(id)
         wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
         self.go_to_homepage()
         self.contact_cache = None
