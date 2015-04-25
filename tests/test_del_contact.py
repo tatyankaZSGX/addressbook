@@ -22,7 +22,7 @@ import random
 #    old_contacts[0:1]=[]
 #    assert old_contacts == new_contacts
 
-def test_delete_rand_contact_from_homepage(app, db):
+def test_delete_rand_contact_from_homepage(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(firstname="test"))
     old_contacts = db.get_contact_list()
@@ -31,8 +31,11 @@ def test_delete_rand_contact_from_homepage(app, db):
     new_contacts = db.get_contact_list()
     old_contacts.remove(contact)
     assert old_contacts == new_contacts
+    if check_ui:
+        assert sorted(map(app.contact.clean, db.get_contact_list()), key=Contact.id_or_max) == \
+               sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
 
-def test_delete_rand_contact_while_editing(app, db):
+def test_delete_rand_contact_while_editing(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(firstname="test"))
     old_contacts = db.get_contact_list()
@@ -41,3 +44,6 @@ def test_delete_rand_contact_while_editing(app, db):
     new_contacts = db.get_contact_list()
     old_contacts.remove(contact)
     assert old_contacts == new_contacts
+    if check_ui:
+        assert sorted(map(app.contact.clean, db.get_contact_list()), key=Contact.id_or_max) == \
+               sorted(app.contact.get_contact_list(), key=Contact.id_or_max)

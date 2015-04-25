@@ -181,7 +181,7 @@ class ContactHelper:
 
     def get_contact_props_from_editpage(self, index):
         wd = self.app.wd
-        self.go_to_editpage_from_homepage(index)
+        self.go_to_editpage_by_index_from_homepage(index)
         id = wd.find_element_by_name("id").get_attribute("value")
         firstname = wd.find_element_by_name("firstname").get_attribute("value")
         middlename = wd.find_element_by_name("middlename").get_attribute("value")
@@ -205,3 +205,7 @@ class ContactHelper:
                        company=company, address=address, homephone=home, mobilephone=mobile, workphone=work, fax=fax,
                        email=email, email2=email2, email3=email3, homepage=homepage, address2=address2,
                        phone2=phone2, notes=notes, id=id)
+
+    def clean(self, contact):
+        return Contact(id=contact.id, firstname=contact.firstname.strip(),
+                       lastname=contact.lastname.strip(), address=contact.address.strip())

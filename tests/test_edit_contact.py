@@ -32,7 +32,7 @@ import random
 #    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
 
-def test_edit_rand_contact_from_homepage(app, db, data_contact):
+def test_edit_rand_contact_from_homepage(app, db, check_ui, data_contact):
     contact = data_contact
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(firstname="test"))
@@ -48,8 +48,11 @@ def test_edit_rand_contact_from_homepage(app, db, data_contact):
             edcontact.__dict__[atr] = contact.__dict__[atr]
     old_contacts.append(edcontact)
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+    if check_ui:
+        assert sorted(map(app.contact.clean, db.get_contact_list()), key=Contact.id_or_max) == \
+               sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
 
-def test_edit_rand_contact_from_details(app, db, json_contact):
+def test_edit_rand_contact_from_details(app, db, check_ui, json_contact):
     contact = json_contact
     if len(db.get_contact_list()) == 0:
        app.contact.create(Contact(firstname="test"))
@@ -65,3 +68,6 @@ def test_edit_rand_contact_from_details(app, db, json_contact):
             edcontact.__dict__[atr] = contact.__dict__[atr]
     old_contacts.append(edcontact)
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+    if check_ui:
+        assert sorted(map(app.contact.clean, db.get_contact_list()), key=Contact.id_or_max) == \
+               sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
