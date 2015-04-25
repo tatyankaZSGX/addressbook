@@ -18,8 +18,6 @@ def test_edit_rand_group(app, db, check_ui, json_group):
     group = json_group
     if len(db.get_group_list()) == 0:
         app.group.create(Group(name="test"))
-    def clean(group):
-        return Group(id=group.id, name=group.name.strip())
     old_groups = db.get_group_list()
     edgroup = random.choice(old_groups)
     group.id = edgroup.id
@@ -29,5 +27,5 @@ def test_edit_rand_group(app, db, check_ui, json_group):
     old_groups.append(group)
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
     if check_ui:
-        assert sorted(map(clean, db.get_group_list()), key=Group.id_or_max) == sorted(app.group.get_group_list(),
-                                                                         key=Group.id_or_max)
+        assert sorted(map(app.group.clean, db.get_group_list()), key=Group.id_or_max) == sorted(
+            app.group.get_group_list(), key=Group.id_or_max)

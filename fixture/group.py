@@ -107,3 +107,5 @@ class GroupHelper:
                 self.group_cache.append(Group(name=text, id=id))
         return list(self.group_cache)
 
+    def clean(self, group):
+        return Group(id=group.id, name=group.name.strip())
