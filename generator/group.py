@@ -14,7 +14,7 @@ except getopt.GetoptError as err:
     getopt.usage()
     sys.exit(2)
 
-n = 3
+n = 0
 f = "data\group.json"
 
 for o, a in opts:
@@ -27,7 +27,7 @@ def random_string(prefix, maxlen):
     symbols = string.ascii_letters + string.digits + " "*10
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
-testdata = [Group(name="", header="", footer="")] + [
+testdata = [Group(header="header1234")] + [
     Group(name=random_string("", 10), header=random_string("header", 10),footer=random_string("footer", 10))
     for i in range(n)
 ]

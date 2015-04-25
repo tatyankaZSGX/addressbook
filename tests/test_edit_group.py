@@ -24,7 +24,10 @@ def test_edit_rand_group(app, db, check_ui, json_group):
     app.group.edit_group_by_id(edgroup.id, group)
     new_groups = db.get_group_list()
     old_groups.remove(edgroup)
-    old_groups.append(group)
+    for atr in group.__dict__:
+        if group.__dict__[atr] is not None:
+            edgroup.__dict__[atr] = group.__dict__[atr]
+    old_groups.append(edgroup)
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
     if check_ui:
         assert sorted(map(app.group.clean, db.get_group_list()), key=Group.id_or_max) == sorted(
