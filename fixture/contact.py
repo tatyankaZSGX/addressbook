@@ -207,5 +207,12 @@ class ContactHelper:
                        phone2=phone2, notes=notes, id=id)
 
     def clean(self, contact):
-        return Contact(id=contact.id, firstname=contact.firstname.strip(),
-                       lastname=contact.lastname.strip(), address=contact.address.strip())
+        def exclude_spaces(str):
+            newstr = ' '.join(map(lambda x: x.strip(), str.split()))
+            return newstr
+        return Contact(id=contact.id, firstname=exclude_spaces(contact.firstname),
+                       lastname=exclude_spaces(contact.lastname), address=exclude_spaces(contact.address),
+                       homephone=exclude_spaces(contact.homephone), mobilephone=exclude_spaces(contact.mobilephone),
+                       workphone=exclude_spaces(contact.workphone), phone2=exclude_spaces(contact.phone2),
+                       email=exclude_spaces(contact.email), email2=exclude_spaces(contact.email2),
+                       email3=exclude_spaces(contact.email3), tel=None, mails=None)

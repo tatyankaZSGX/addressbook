@@ -36,12 +36,9 @@ class DbFixture:
                            "00:00:00'")
             for row in cursor:
                 (id, firstname, lastname, address, home, mobile, work, phone2, email, email2, email3) = row
-                element = Contact(id=str(id), firstname=firstname, lastname=lastname, address=address,
+                list.append(Contact(id=str(id), firstname=firstname, lastname=lastname, address=address,
                                     homephone=home, mobilephone=mobile, workphone=work, phone2=phone2, email=email,
-                                    email2=email2, email3=email3, tel=None, mails=None)
-                element.tel = self.merge_tel_like_homepage(element)
-                element.mails = self.merge_mail_like_homepage(element)
-                list.append(element)
+                                    email2=email2, email3=email3, tel='', mails=''))
         finally:
             cursor.close()
         return list
@@ -49,14 +46,7 @@ class DbFixture:
     def destroy(self):
         self.connection.close()
 
-    def clear(self, s):
-        return re.sub("[() -]", "", s)
 
-    def merge_tel_like_homepage(self, contact):
-        return "\n".join(filter(lambda x: x!="",
-                            map(lambda x: self.clear(x),
-                                filter(lambda x: x is not None, [contact.homephone, contact.mobilephone,
-                                                                 contact.workphone, contact.phone2]))))
 
     def clear_board_spaces(self, s):
         return re.sub("^ *| *$", "", s)
