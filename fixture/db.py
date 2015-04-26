@@ -45,17 +45,3 @@ class DbFixture:
 
     def destroy(self):
         self.connection.close()
-
-
-
-    def clear_board_spaces(self, s):
-        return re.sub("^ *| *$", "", s)
-
-    def clear_inner_spaces(self, s):
-        return re.sub(" +", " ", s)
-
-    def merge_mail_like_homepage(self, contact):
-        return "\n".join(filter(lambda x: x!="",
-                            map(lambda x: self.clear_inner_spaces(x),
-                                map(lambda x: self.clear_board_spaces(x),
-                                    filter(lambda x: x is not None,[contact.email, contact.email2,contact.email3])))))
